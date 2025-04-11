@@ -1,0 +1,39 @@
+{
+  "name": "facefinder-ai",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tabler/icons-react": "^3.31.0",
+    "axios": "^1.8.4",
+    "bcryptjs": "^3.0.2",
+    "ejs": "^3.1.10",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.2",
+    "next": "15.3.0",
+    "nodemailer": "^6.10.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.2"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/ejs": "^3.1.5",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "daisyui": "^5.0.18",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
