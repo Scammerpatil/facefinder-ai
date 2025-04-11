@@ -34,9 +34,4 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     path: "/user/notifications",
     icon: <IconBellRinging width="24" height="24" />,
   },
-  {
-    title: "Profile",
-    path: "/user/profile",
-    icon: <IconUser width="24" height="24" />,
-  },
 ];

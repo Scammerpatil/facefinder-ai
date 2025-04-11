@@ -12,15 +12,15 @@ const UploadCCTV = () => {
       return;
     }
     try {
-      const res = axios.postForm("/api/missing-person/image", { file });
+      const res = axios.postForm("/api/missing-person/upload-cctv", { file });
       toast.promise(res, {
-        loading: "Predicting...",
+        loading: "Finding Lost People...",
         success: (data) => {
-          return `Predicted dish name: ${data.data.name}`;
+          return `Lost People Found File Created`;
         },
         error: (error) => {
           console.log(error);
-          return error.response.data.message || "Error predicting dish name.";
+          return error.response.data.message || "Oops!! Something went wrong.";
         },
       });
     } catch (error) {

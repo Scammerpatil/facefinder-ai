@@ -36,7 +36,7 @@ const Reports = () => {
           <tbody>
             {missingPeople.length !== 0 ? (
               missingPeople.map((missingPerson, index) => (
-                <tr>
+                <tr key={missingPerson._id} className="hover">
                   <th>{index + 1}</th>
                   <td>
                     <div className="flex items-center gap-3">
@@ -89,7 +89,7 @@ const Reports = () => {
                 </tr>
               ))
             ) : (
-              <tr className="hover">
+              <tr className="hover" key="no-reports">
                 <td colSpan={9} className="text-center text-lg font-semibold">
                   No reports found
                 </td>

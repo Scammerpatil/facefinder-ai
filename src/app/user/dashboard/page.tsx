@@ -1,21 +1,26 @@
 "use client";
-import {
-  IconCertificate,
-  IconClipboardCheck,
-  IconClock,
-  IconFile,
-  IconShield,
-} from "@tabler/icons-react";
-
+import { User } from "@/types/user";
+import { IconClock, IconFile, IconShield } from "@tabler/icons-react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 export default function Dashboard() {
-  const caseData = [
-    { month: "Jan", pending: 45, solved: 30, new: 40 },
-    { month: "Feb", pending: 35, solved: 40, new: 30 },
-    { month: "Mar", pending: 50, solved: 35, new: 45 },
-    { month: "Apr", pending: 40, solved: 45, new: 35 },
-    { month: "May", pending: 30, solved: 50, new: 25 },
-    { month: "Jun", pending: 45, solved: 40, new: 35 },
-  ];
+  const [data, setData] = useState({
+    user: 0,
+    activeCases: 0,
+    missingpeopleCount: 0,
+    solvedCases: 0,
+    differencePercentage: 0,
+  });
+
+  const fetchUser = async () => {
+    const response = await axios.get("/api/dashboard/admin");
+    setData(response.data.data);
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   return (
     <>
       <h1 className="text-4xl font-bold mb-6 text-center uppercase">
@@ -27,8 +32,8 @@ export default function Dashboard() {
           <div className="stat-figure text-primary">
             <IconFile size={40} />
           </div>
-          <div className="stat-title">Total Active Cases</div>
-          <div className="stat-value text-primary">25.6K</div>
+          <div className="stat-title">Total User</div>
+          <div className="stat-value text-primary">{data.user}</div>
           <div className="stat-desc">21% more than last month</div>
         </div>
 
@@ -36,8 +41,8 @@ export default function Dashboard() {
           <div className="stat-figure text-secondary">
             <IconClock size={40} />
           </div>
-          <div className="stat-title">Total Pending Investigation</div>
-          <div className="stat-value text-secondary">2.6M</div>
+          <div className="stat-title">Total Active Cases</div>
+          <div className="stat-value text-secondary">{data.activeCases}</div>
           <div className="stat-desc">21% more than last month</div>
         </div>
 
@@ -45,8 +50,10 @@ export default function Dashboard() {
           <div className="stat-figure text-secondary">
             <IconShield size={40} />
           </div>
-          <div className="stat-title">Total Officer OnDuty</div>
-          <div className="stat-value text-success">2.6M</div>
+          <div className="stat-title">Total Missing People</div>
+          <div className="stat-value text-success">
+            {data.missingpeopleCount}
+          </div>
           <div className="stat-desc">21% more than last month</div>
         </div>
 
@@ -61,8 +68,8 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div className="stat-value">86%</div>
-          <div className="stat-title">Tasks done</div>
+          <div className="stat-value">{data.differencePercentage} %</div>
+          <div className="stat-title">Cases Pending</div>
           <div className="stat-desc text-secondary">31 tasks remaining</div>
         </div>
       </div>
